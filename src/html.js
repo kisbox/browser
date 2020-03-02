@@ -9,9 +9,7 @@
  * @exports html
  */
 
-const {
-  any: { isArrayLike, isObject }
-} = require("@kisbox/helpers")
+const { type } = require("@kisbox/utils")
 
 /* Construct  */
 
@@ -32,9 +30,9 @@ const {
 function html (name, attributes, childs) {
   const element = document.createElement(name)
 
-  if (isArrayLike(attributes)) {
+  if (type.isArrayLike(attributes)) {
     childs = attributes
-  } else if (isObject(attributes)) {
+  } else if (type(attributes) === "object") {
     Object.assign(element, attributes)
   }
 
@@ -176,7 +174,7 @@ html.show = function (...elements) {
 /* Iteration */
 
 html.each = function (elements, callback) {
-  if (isArrayLike(elements)) {
+  if (type.isArrayLike(elements)) {
     const array = Array.isArray(elements) ? elements : Array.from(elements)
     array.forEach(element => callback(html.convert(element)))
   } else {
