@@ -22,11 +22,12 @@ dom.$ingest = function (tree = document) {
   array.forEach(element => {
     if (element.id) dom[element.id] = element
   })
+
+  dom.html = document
+  dom.head = document.head
+  dom.body = document.body
 }
 my.property.lock(dom, "$ingest")
 
 /* Populate */
-dom.html = document.html
-dom.head = document.head
-dom.body = document.body
 dom.$ingest()
