@@ -1,6 +1,6 @@
 **browser /**
-[Changelog](https://github.com/kisbox/browser/blob/master/CHANGELOG.md)
-• [Readme](https://github.com/kisbox/browser/blob/master/README.md)
+[Readme](https://github.com/kisbox/browser/blob/master/README.md)
+• [Changelog](https://github.com/kisbox/browser/blob/master/CHANGELOG.md)
 
 # Readme
 

@@ -1,6 +1,6 @@
 **browser /**
-[Changelog](https://github.com/kisbox/browser/blob/master/CHANGELOG.md)
-• [Readme](https://github.com/kisbox/browser/blob/master/README.md)
+[Readme](https://github.com/kisbox/browser/blob/master/README.md)
+• [Changelog](https://github.com/kisbox/browser/blob/master/CHANGELOG.md)
 
 # Changelog
 
@@ -17,6 +17,14 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 **Remember:** Both micro and minor releases are guaranteed to respect
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
+
+## 1.0.0-beta.2 - 2020-03-07
+
+### Fixed
+
+- API: Fix 'dom' `.html`, `.head` and `.body`.
+- Meta: Fix @kisbox/model version.
+- Meta: Fix dependencies version.
 
 ## 1.0.0-beta.1 - 2020-02-29
 
