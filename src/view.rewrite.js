@@ -22,9 +22,8 @@ function rewrite (view, domNode) {
     })
   }
 
-  domNode.childNodes.forEach(child => {
-    rewrite(view, child)
-  })
+  const children = Array.from(domNode.childNodes)
+  children.forEach(child => rewrite(view, child))
 }
 
 rewrite.attribute = function (view, domNode, attribute) {
