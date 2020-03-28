@@ -34,7 +34,8 @@ class View extends LiveObject {
     const content = tree.content
 
     if (
-      content.childNodes.length > 1
+      !content.childNodes.length
+      || content.childNodes.length > 1
       || content.childNodes[0].dataset.type === "ellipsis"
     ) {
       this.domNode = html("div", null, content.childNodes)
