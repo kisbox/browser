@@ -3,9 +3,9 @@
  * View custom attributes (`<tag $attribute="x">`)
  * */
 
-// const {
-//   $meta: { $memoizer }
-// } = require("@kisbox/helpers")
+const {
+  $meta: { $memoizer }
+} = require("@kisbox/helpers")
 
 const html = require("./html")
 
@@ -31,31 +31,43 @@ attributes.label = function (view, domNode, value) {
   }
 }
 
-// // $group="network"
-// attributes.group = function (view, domNode, value) {
-//   // Init or get private group.
-//   const groups = $groups(view)
-//   if (!groups[value]) {
-//     groups[value] = { name: uniqueName(value), members: [] }
-//   }
-//   const group = groups[value]
+// $group="network"
+attributes.group = function (view, domNode, value) {
+  $groups.add(view, value, domNode)
+  domNode.onchange = () => view[value] = domNode.value
+}
 
-//   // Add **domNode**.
-//   group.members.push(domNode)
-//   domNode.group = group
-//   domNode.name = group.name
-//   domNode.onchange = groupEvent
-// }
+/* Helpers: $group */
 
-// const $groups = $memoizer()
+const $groups = $memoizer("/groups/")
 
-// /* Helpers */
+$groups.get = function (view, name) {
+  const groups = $groups(view)
+  if (groups[name]) return groups[name]
 
-// function uniqueName (name = "group") {
-//   uniqueName.counter++
-//   return `/${group}.${counter}/`
-// }
-// uniqueName.counter = 0
+  const group = groups[name] = { name: uniqueName(name), members: [] }
+
+  view.$on(name, value => {
+    const selected = group.members.find(m => m.value === value)
+    selected.checked = true
+  })
+
+  return group
+}
+
+$groups.add = function (view, name, domNode) {
+  const group = $groups.get(view, name)
+  group.members.push(domNode)
+  domNode.name = group.name
+}
+
+/* Helpers */
+
+function uniqueName (name = "group") {
+  uniqueName.counter++
+  return `/${name}.${uniqueName.counter}/`
+}
+uniqueName.counter = 0
 
 /* Exports */
 module.exports = attributes
