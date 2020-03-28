@@ -96,6 +96,31 @@ html.replace = function (element, content) {
 }
 
 /**
+ * Insert `content` before `element`.
+ *
+ * @param {HTMLElement} element - An HTML element.
+ * @param {Any} content - The content to insert before **element**.
+ */
+html.insertBefore = function (element, content) {
+  const domNode = html.convert(content)
+  element.parentNode.insertBefore(domNode, element)
+}
+
+/**
+ * Insert `content` after `element`.
+ *
+ * @param {HTMLElement} element - An HTML element.
+ * @param {Any} content - The content to insert after **element**.
+ */
+html.insertAfter = function (element, content) {
+  if (element.nextSibling) {
+    html.insertBefore(element.nextSibling, content)
+  } else {
+    html.append(element.parentNode, content)
+  }
+}
+
+/**
  * Set the content of element to ...childs. Any previous content will be erased.
  *
  * @param {HTMLElement} element
