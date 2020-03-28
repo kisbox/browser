@@ -24,6 +24,9 @@ const {
 
 const html = require("./html")
 
+const $attributes = $sideScope("/attributes/")
+const $helpers = $sideScope("/helpers/")
+
 /* Class */
 
 class View extends LiveObject {
@@ -92,10 +95,7 @@ View.expand = require("./view.expand")
 View.rewrite = require("./view.rewrite")
 
 /* Customizables */
-const $attributes = $sideScope("/attributes/")
 Object.assign(View.attributes, require("./view.attributes"))
-
-const $helpers = $sideScope("/helpers/")
 Object.assign(View.helpers, require("./view.helpers"))
 
 /* Exports */
