@@ -74,6 +74,14 @@ class View extends LiveObject {
     html.append(parent, this)
   }
 
+  $show () {
+    html.show(this)
+  }
+
+  $hide () {
+    html.hide(this)
+  }
+
   /* Customizables */
   static get attributes () {
     return $attributes(this)
