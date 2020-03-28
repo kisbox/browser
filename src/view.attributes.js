@@ -21,13 +21,14 @@ attributes.ref = function (view, domNode, value) {
 attributes.label = function (view, domNode, value) {
   const label = html(
     "label",
-    {
-      for: domNode,
-      onclick: () => domNode.click()
-    },
-    value
+    { for: domNode, onclick: () => domNode.click() },
+    html("span", null, value)
   )
-  html.insertBefore(domNode, label)
+
+  html.insertAfter(domNode, label)
+  if (domNode.type !== "checkbox" && domNode.type !== "radio") {
+    html.append(label, domNode)
+  }
 }
 
 // // $group="network"
