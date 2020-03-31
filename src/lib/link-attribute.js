@@ -82,7 +82,7 @@ rules.radio = function (domNode, attribute, object, key) {
   callback()
 }
 
-rules.checkBox = function (domNode, attribute, object, key) {
+rules.checkbox = function (domNode, attribute, object, key) {
   if (attribute !== "checked") return
 
   pullOn("change", object, domNode, key, attribute)
