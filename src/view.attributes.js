@@ -48,6 +48,10 @@ $groups.get = function (view, name) {
   const group = groups[name] = { name: uniqueName(name), members: [] }
 
   view.$on(name, value => {
+    // Unchecking previous radio prevents same-frame changes to lead to
+    // an inconsistent display.
+    const previous = group.members.find(m => m.checked)
+    if (previous) previous.checked = false
     const selected = group.members.find(m => m.value === value)
     selected.checked = true
   })
