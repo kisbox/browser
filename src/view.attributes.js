@@ -69,7 +69,7 @@ $groups.add = function (view, name, domNode) {
 
 function uniqueName (name = "group") {
   uniqueName.counter++
-  return `/${name}.${uniqueName.counter}/`
+  return `[${name}:${uniqueName.counter}]`
 }
 uniqueName.counter = 0
 
