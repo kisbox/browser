@@ -9,8 +9,9 @@
  * Replaces **template** variables by equivalent `<template>` tags.
  */
 function expand (template) {
+  const stripped = template.replace(/^[\s\n]*/, "").replace(/[\s\n]*$/, "")
   return (
-    template
+    stripped
       // Firefox fix (prefix on[event] with a dot).
       .replace(/\s(on\w+)=(%\w+)/g, " .$1=$2")
       // Apply only on content outside of HTML tags.
