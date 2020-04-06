@@ -15,7 +15,8 @@ const {
 function linkAttribute (domNode, attribute, object, key = attribute, transform) {
   // Sugars
   if (attribute === "class") attribute = "className"
-  if (attribute === "style") object[key] = domNode.style
+  else if (attribute === "readonly") attribute = "readOnly"
+  else if (attribute === "style") object[key] = domNode.style
 
   // Firefox work-around.
   if (attribute.substr(0, 3) === ".on") attribute = attribute.substr(1)
