@@ -71,7 +71,7 @@ class View extends LiveObject {
     if (!parent) {
       throw new Error(`Can't find target: "${target}"`)
     }
-    html.append(parent, this)
+    html.rewrite(parent, this)
   }
 
   $show () {
