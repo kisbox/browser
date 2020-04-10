@@ -7,7 +7,8 @@
  */
 
 const {
-  function: { dispatch }
+  function: { dispatch },
+  promise: { timeout }
 } = require("@kisbox/helpers")
 
 /* Library */
@@ -92,10 +93,23 @@ rules.checkbox = function (domNode, attribute, object, key) {
 /* Helpers */
 
 function pullOn (eventName, object, domNode, key, attribute) {
-  domNode.addEventListener(eventName, () => {
-    object[key] = domNode[attribute]
-    domNode.setCustomValidity("")
-  })
+  if (eventName === "input") {
+    let stamp
+    domNode.addEventListener(eventName, () => {
+      const current = stamp = +new Date()
+      timeout(1000).then(() => {
+        if (stamp === current) {
+          object[key] = domNode[attribute]
+          domNode.setCustomValidity("")
+        }
+      })
+    })
+  } else {
+    domNode.addEventListener(eventName, () => {
+      object[key] = domNode[attribute]
+      domNode.setCustomValidity("")
+    })
+  }
 }
 
 function maybeBind (func, context) {
