@@ -66,7 +66,7 @@ class View extends LiveObject {
     return html.grab(pattern, this.domNode)
   }
 
-  $mount (target) {
+  $mount (target = "body") {
     const parent = target ? html.grab(target) : document.body
     if (!parent) {
       throw new Error(`Can't find target: "${target}"`)
