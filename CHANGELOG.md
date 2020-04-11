@@ -18,6 +18,24 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.5 - 2020-04-11
+
+### Breaking
+
+- Logic: \$mount() now replaces other child nodes (View).
+
+### Changed
+
+- API: \$mount() on `body` by default.
+- Logic: Delay input value (View). Input values are now passed to views after 1s
+  without typing.
+
+### Fixed
+
+- Logic: Fix handling of templates with one element (View).
+- Logic: Fix handling of `readonly` attribute (View).
+- Logic: Fix templates made of one variable (View).
+
 ## 1.0.0-beta.4 - 2020-04-04
 
 ### Fixed
