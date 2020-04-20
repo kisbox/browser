@@ -17,20 +17,20 @@ function rewrite (view, domNode) {
   if (domNode.nodeName === "TEMPLATE") {
     rewrite.template(view, domNode)
   } else if (domNode.attributes) {
-    Object.values(domNode.attributes).forEach(attribute => {
+    Object.values(domNode.attributes).forEach((attribute) => {
       rewrite.attribute(view, domNode, attribute)
     })
   }
 
   const children = Array.from(domNode.childNodes)
-  children.forEach(child => rewrite(view, child))
+  children.forEach((child) => rewrite(view, child))
 }
 
 rewrite.attribute = function (view, domNode, attribute) {
   if (attribute.name[0] === "$") {
     // $customAttribute
     const name = attribute.name.substr(1)
-    dispatch(view.constructor.attributes, name, rule => {
+    dispatch(view.constructor.attributes, name, (rule) => {
       rule(view, domNode, attribute.value)
     })
   } else if (attribute.name.match(/^%{?\w+}?$/)) {
@@ -65,8 +65,8 @@ rewrite.variable = function (view, domNode) {
 
   const { key, func } = extractTemplateValues(view, domNode)
   const push = func
-    ? value => currentNode = html.replace(currentNode, func(value))
-    : value => currentNode = html.replace(currentNode, value)
+    ? (value) => currentNode = html.replace(currentNode, func(value))
+    : (value) => currentNode = html.replace(currentNode, value)
 
   view.$on(key, push)
 }
@@ -79,7 +79,7 @@ rewrite.ellipsis = function (view, domNode) {
   html.replace(domNode, anchor)
 
   let ellipsis = []
-  const update = array => ellipsis = updateEllipsis(anchor, ellipsis, array)
+  const update = (array) => ellipsis = updateEllipsis(anchor, ellipsis, array)
 
   // TODO: fix memory management
   let liveMap
@@ -116,14 +116,14 @@ rewrite.ellipsis = function (view, domNode) {
 
 function updateEllipsis (anchor, oldNodes, array = []) {
   const parent = anchor.parentNode
-  oldNodes.forEach(node => {
+  oldNodes.forEach((node) => {
     if (node.parentNode === parent) {
       parent.removeChild(node)
     }
   })
 
   const ellipsis = []
-  html.each(array, child => {
+  html.each(array, (child) => {
     ellipsis.push(child)
     parent.insertBefore(child, anchor)
   })

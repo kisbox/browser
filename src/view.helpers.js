@@ -6,8 +6,8 @@
 /* Extension */
 const helpers = {}
 
-helpers.not = any => !any
-helpers.has = any => !!any
+helpers.not = (any) => !any
+helpers.has = (any) => !!any
 
 /* Exports */
 module.exports = helpers

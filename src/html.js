@@ -138,7 +138,7 @@ html.rewrite = function (element, childs) {
  * @param {HTMLElelement|Array<HTMLElement>} [childs]
  */
 html.append = function (parent, childs) {
-  html.each(childs, child => parent.appendChild(child))
+  html.each(childs, (child) => parent.appendChild(child))
 }
 
 /**
@@ -147,7 +147,7 @@ html.append = function (parent, childs) {
  * @param {HTMLElement} ...elements
  * */
 html.clear = function (...elements) {
-  html.each(elements, element => element.innerHTML = "")
+  html.each(elements, (element) => element.innerHTML = "")
 }
 
 /**
@@ -156,7 +156,7 @@ html.clear = function (...elements) {
  * @param {HTMLElement} ...elements
  * */
 html.remove = function (...elements) {
-  html.each(elements, element => {
+  html.each(elements, (element) => {
     try {
       element.parentNode.removeChild(element)
     } catch (error) {
@@ -171,7 +171,7 @@ html.remove = function (...elements) {
  * @param {HTMLElement|Array<HTMLElement>} elements
  * */
 html.destroy = function (...elements) {
-  html.each(elements, element => {
+  html.each(elements, (element) => {
     html.clear(element)
     html.remove(element)
   })
@@ -184,7 +184,7 @@ html.destroy = function (...elements) {
  * @param {HTMLElement|Array<HTMLElement>} elements
  */
 html.hide = function (...elements) {
-  html.each(elements, element => element.hidden = true)
+  html.each(elements, (element) => element.hidden = true)
 }
 
 /**
@@ -193,7 +193,7 @@ html.hide = function (...elements) {
  * @param {HTMLElement|Array<HTMLElement>} elements
  */
 html.show = function (...elements) {
-  html.each(elements, element => element.hidden = false)
+  html.each(elements, (element) => element.hidden = false)
 }
 
 /* Iteration */
@@ -201,7 +201,7 @@ html.show = function (...elements) {
 html.each = function (elements, callback) {
   if (type.isArrayLike(elements)) {
     const array = Array.isArray(elements) ? elements : Array.from(elements)
-    array.forEach(element => callback(html.convert(element)))
+    array.forEach((element) => callback(html.convert(element)))
   } else {
     callback(html.convert(elements))
   }

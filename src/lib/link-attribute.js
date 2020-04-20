@@ -23,7 +23,7 @@ function linkAttribute (domNode, attribute, object, key = attribute, transform) 
   if (attribute.substr(0, 3) === ".on") attribute = attribute.substr(1)
 
   if (attribute.substr(0, 2) === "on") {
-    domNode[attribute] = event => handleEvent(object, key, event)
+    domNode[attribute] = (event) => handleEvent(object, key, event)
   } else {
     linkValue(domNode, attribute, object, key, transform)
   }
@@ -40,7 +40,7 @@ function linkValue (domNode, attribute, object, key, transform) {
     object[key] = domNode[attribute]
   }
 
-  dispatch(rules, domNode.tagName, binder => {
+  dispatch(rules, domNode.tagName, (binder) => {
     binder(domNode, attribute, object, key)
   })
 }

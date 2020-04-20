@@ -15,7 +15,7 @@ function expand (template) {
       // Firefox fix (prefix on[event] with a dot).
       .replace(/\s(on\w+)=(%\w+)/g, " .$1=$2")
       // Apply only on content outside of HTML tags.
-      .replace(/(^|>)[^<>]*(<|$)/g, string =>
+      .replace(/(^|>)[^<>]*(<|$)/g, (string) =>
         string
 
           // %function:...identifier / %{function:...identifier}

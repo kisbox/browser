@@ -52,7 +52,7 @@ class View extends LiveObject {
     // Import parameters.
     if (params) {
       const keys = Object.keys(this)
-      const keysFiltered = keys.filter(key => key !== "style")
+      const keysFiltered = keys.filter((key) => key !== "style")
       this.$import(keysFiltered, params)
 
       if ("style" in keys) {

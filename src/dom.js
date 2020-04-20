@@ -19,7 +19,7 @@ const my = require("@kisbox/helpers")
 dom.$ingest = function (tree = document) {
   if (tree.id) dom[tree.id] = tree
   const array = tree.querySelectorAll("[id]")
-  array.forEach(element => {
+  array.forEach((element) => {
     if (element.id) dom[element.id] = element
   })
 
