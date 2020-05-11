@@ -105,7 +105,9 @@ rewrite.ellipsis = function (view, domNode) {
     }
 
     // Bind new array.
-    if (isLiveArray) array.$on("$change", update)
+    if (isLiveArray) {
+      array.$on("$change", () => update(array))
+    }
     update(array)
   }
 
