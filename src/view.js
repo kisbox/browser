@@ -19,7 +19,7 @@ const { LiveObject } = require("@kisbox/model")
 const {
   $meta: { $sideScope },
   constructor: { shortcuts },
-  property: { lock }
+  property: { hideLock }
 } = require("@kisbox/helpers")
 
 const html = require("./html")
@@ -45,7 +45,7 @@ class View extends LiveObject {
     } else {
       this.domNode = content.childNodes[0]
     }
-    lock(this, "domNode")
+    hideLock(this, "domNode")
 
     View.rewrite(this, this.domNode)
 
