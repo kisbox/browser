@@ -53,7 +53,7 @@ class View extends LiveObject {
     if (params) {
       const keys = Object.keys(this)
       const keysFiltered = keys.filter((key) => key !== "style")
-      this.$import(keysFiltered, params)
+      this.$import(params, keysFiltered)
 
       if ("style" in keys) {
         Object.assign(this.style, params.style)
