@@ -19,14 +19,12 @@ attributes.ref = function (view, domNode, value) {
 
 // $label="Text"
 attributes.label = function (view, domNode, value) {
-  const label = html(
-    "label",
-    { for: domNode, onclick: () => domNode.click() },
-    html("span", null, value)
-  )
-
-  html.insertAfter(domNode, label)
-  if (domNode.type !== "checkbox" && domNode.type !== "radio") {
+  if (domNode.type === "checkbox" || domNode.type === "radio") {
+    const label = html("label", { onclick: () => domNode.click() }, value)
+    html.insertAfter(domNode, label)
+  } else {
+    const label = html("label", null, html("span", null, value))
+    html.insertAfter(domNode, label)
     html.append(label, domNode)
   }
 }
