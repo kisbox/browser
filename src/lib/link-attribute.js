@@ -17,6 +17,8 @@ function linkAttribute (domNode, attribute, object, key = attribute, transform) 
   // Sugars
   if (attribute === "class") attribute = "className"
   else if (attribute === "readonly") attribute = "readOnly"
+  else if (attribute === "for") attribute = "htmlFor"
+  else if (attribute === "selectedIndex") attribute = "selectedIndex"
   else if (attribute === "style") object[key] = domNode.style
 
   // Firefox work-around.
