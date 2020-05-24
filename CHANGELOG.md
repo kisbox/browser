@@ -18,6 +18,13 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.9 - 2020-05-24
+
+### Fixed
+
+- Logic: Support attributes `for` and `selectedIndex` (View).
+- Logic: Fix `$label` custom attribute (View).
+
 ## 1.0.0-beta.8 - 2020-05-17
 
 ### Fixed
