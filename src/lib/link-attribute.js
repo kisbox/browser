@@ -6,10 +6,7 @@
  * TODO: complete binding?
  */
 
-const {
-  function: { dispatch },
-  promise: { timeout }
-} = require("@kisbox/helpers")
+const { dispatch, timeout } = require("@kisbox/helpers")
 
 /* Library */
 

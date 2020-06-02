@@ -3,9 +3,7 @@
  * View custom attributes (`<tag $attribute="x">`)
  * */
 
-const {
-  $meta: { $memoizer }
-} = require("@kisbox/helpers")
+const { $memoizer } = require("@kisbox/helpers")
 
 const html = require("./html")
 

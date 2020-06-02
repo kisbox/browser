@@ -7,8 +7,7 @@
  * @exports dom
  */
 const dom = exports
-
-const my = require("@kisbox/helpers")
+const { lock } = require("@kisbox/helpers")
 
 /**
  * Add all HTMLElement having an `id` attributes to dom. If **tree** is
@@ -27,7 +26,7 @@ dom.$ingest = function (tree = document) {
   dom.head = document.head
   dom.body = document.body
 }
-my.property.lock(dom, "$ingest")
+lock(dom, "$ingest")
 
 /* Populate */
 dom.$ingest()

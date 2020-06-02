@@ -15,12 +15,7 @@
  */
 
 const { LiveObject } = require("@kisbox/model")
-
-const {
-  $meta: { $sideScope },
-  constructor: { shortcuts },
-  property: { hideLock }
-} = require("@kisbox/helpers")
+const { $sideScope, hideLock } = require("@kisbox/helpers")
 
 const html = require("./html")
 
@@ -92,7 +87,7 @@ class View extends LiveObject {
   }
 }
 
-const { proto } = shortcuts(View)
+const proto = View.prototype
 
 proto.$on("$destroy", function () {
   html.destroy(this)

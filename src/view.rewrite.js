@@ -4,9 +4,7 @@
  *
  * Bind a templateNode to a view.
  **/
-const {
-  function: { dispatch }
-} = require("@kisbox/helpers")
+const { dispatch } = require("@kisbox/helpers")
 
 const html = require("./html")
 const linkAttribute = require("./lib/link-attribute")
