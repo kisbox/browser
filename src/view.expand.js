@@ -20,13 +20,19 @@ function expand (template) {
 
           // %function:...identifier / %{function:...identifier}
           .replace(/(^|[^\\])%{?(\w+):\.\.\.(\w+)}?/g, ellipsis)
+          .replace(/(^|[^\\])%{?(\w+):\.\.\.(\w+)}?/g, ellipsis)
+
           // %function:identifier /  %{function:identifier}
+          .replace(/(^|[^\\])%{?(\w+):(\w+)}?/g, variable)
           .replace(/(^|[^\\])%{?(\w+):(\w+)}?/g, variable)
 
           // ...%identifier / ...${identifier}
           .replace(/()\.\.\.%{?()(\w+)}?/g, ellipsis)
+          .replace(/()\.\.\.%{?()(\w+)}?/g, ellipsis)
+
           // %identifier / ${identifier}
-          .replace(/(^|[^\\])%{?()(\w+)}?/g, variable)
+          .replace(/(^|[^\\])%\{?()(\w+)\}?/g, variable)
+          .replace(/(^|[^\\])%\{?()(\w+)\}?/g, variable)
 
           // \%...
           .replace(/(^|[^\\])\\%/g, "$1%")
