@@ -103,6 +103,11 @@ function pullOn (eventName, object, domNode, key, attribute) {
         }
       })
     })
+    domNode.addEventListener("keydown", (event) => {
+      if (event.keyCode !== 13) return
+      object[key] = domNode[attribute]
+      domNode.setCustomValidity("")
+    })
   } else {
     domNode.addEventListener(eventName, () => {
       object[key] = domNode[attribute]
