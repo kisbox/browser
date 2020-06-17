@@ -58,7 +58,7 @@ rules.INPUT = function (domNode, attribute, object, key) {
 }
 
 rules.TEXTAREA = function (domNode, attribute, object, key) {
-  if (key === "value") {
+  if (attribute === "value") {
     pullOn("input", object, domNode, key, attribute)
   }
 }
