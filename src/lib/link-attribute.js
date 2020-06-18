@@ -108,6 +108,10 @@ function pullOn (eventName, object, domNode, key, attribute) {
       object[key] = domNode[attribute]
       domNode.setCustomValidity("")
     })
+    domNode.addEventListener("blur", () => {
+      object[key] = domNode[attribute]
+      domNode.setCustomValidity("")
+    })
   } else {
     domNode.addEventListener(eventName, () => {
       object[key] = domNode[attribute]
