@@ -7,6 +7,7 @@
  */
 
 const { dispatch, timeout } = require("@kisbox/helpers")
+const { type } = require("@kisbox/utils")
 
 /* Library */
 
@@ -122,7 +123,20 @@ function pullOn (eventName, object, domNode, key, attribute) {
 
 function maybeBind (func, context) {
   if (func) {
-    return func.bind(context)
+    const binded = func.bind(context)
+    return (x) => jsToHtml(binded(x))
+  } else {
+    return jsToHtml
+  }
+}
+
+function jsToHtml (value) {
+  if (value == null) {
+    return ""
+  } else if (type(value) === "promise") {
+    return "Pending..."
+  } else {
+    return value
   }
 }
 
