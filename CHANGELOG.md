@@ -18,6 +18,17 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.12 - 2020-06-21
+
+### Changed
+
+- Logic: Inputs treat nullish values as empty strings (View).
+
+### Fixed
+
+- Logic: Fix <textarea> value attribute binding (View).
+- Logic: Fix a delay in user input timing (View).
+
 ## 1.0.0-beta.11 - 2020-06-14
 
 ### Changed
