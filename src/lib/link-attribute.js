@@ -99,23 +99,23 @@ function pullOn (eventName, object, domNode, key, attribute) {
       const current = stamp = +new Date()
       timeout(1000).then(() => {
         if (stamp === current) {
-          object[key] = domNode[attribute]
+          object[key] = htmlToJs(domNode[attribute])
           domNode.setCustomValidity("")
         }
       })
     })
     domNode.addEventListener("keydown", (event) => {
       if (event.keyCode !== 13) return
-      object[key] = domNode[attribute]
+      object[key] = htmlToJs(domNode[attribute])
       domNode.setCustomValidity("")
     })
     domNode.addEventListener("blur", () => {
-      object[key] = domNode[attribute]
+      object[key] = htmlToJs(domNode[attribute])
       domNode.setCustomValidity("")
     })
   } else {
     domNode.addEventListener(eventName, () => {
-      object[key] = domNode[attribute]
+      object[key] = htmlToJs(domNode[attribute])
       domNode.setCustomValidity("")
     })
   }
@@ -138,6 +138,10 @@ function jsToHtml (value) {
   } else {
     return value
   }
+}
+
+function htmlToJs (value) {
+  return value === "" ? null : value
 }
 
 /* Exports */
