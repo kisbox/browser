@@ -18,6 +18,12 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.13 - 2020-07-05
+
+### Breaking
+
+- Logic: Breaking change: Import empty inputs as null rather than "" (View).
+
 ## 1.0.0-beta.12 - 2020-06-21
 
 ### Changed
