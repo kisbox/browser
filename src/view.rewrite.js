@@ -4,7 +4,7 @@
  *
  * Bind a templateNode to a view.
  **/
-const { dispatch } = require("@kisbox/helpers")
+const { dispatch, isArrayLike } = require("@kisbox/helpers")
 
 const html = require("./html")
 const linkAttribute = require("./lib/link-attribute")
@@ -88,6 +88,12 @@ rewrite.ellipsis = function (view, domNode) {
       liveMap = null
     } else if (previous && typeof previous.$off === "function") {
       previous.$off("$change", update)
+    }
+
+    // Special cases
+    if (!isArrayLike(array)) {
+      update([])
+      return
     }
 
     const isLiveArray = array && typeof array.$map === "function"
