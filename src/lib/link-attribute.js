@@ -97,7 +97,8 @@ function pullOn (eventName, object, domNode, key, attribute) {
     let stamp
     domNode.addEventListener(eventName, () => {
       const current = stamp = +new Date()
-      timeout(1000).then(() => {
+      const delay = domNode.type === "range" ? 40 : 1000
+      timeout(delay).then(() => {
         if (stamp === current) {
           object[key] = htmlToJs(domNode[attribute])
           domNode.setCustomValidity("")
