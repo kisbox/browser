@@ -18,6 +18,12 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.17 - 2020-11-07
+
+### Fixed
+
+- Logic: Set a delay for importing HTML range value.
+
 ## 1.0.0-beta.15 - 2020-07-12
 
 ### Fixed
