@@ -113,7 +113,6 @@ function pullOn (eventName, object, domNode, key, attribute) {
     domNode.addEventListener("blur", () => {
       pullValue(object, domNode, key, attribute)
     })
-
   } else {
     domNode.addEventListener(eventName, () => {
       pullValue(object, domNode, key, attribute)
