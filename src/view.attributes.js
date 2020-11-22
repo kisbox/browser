@@ -30,6 +30,8 @@ attributes.label = function (view, domNode, value) {
 // $group="network"
 attributes.group = function (view, domNode, value) {
   $groups.add(view, value, domNode)
+  if (!domNode.hasAttribute("value")) return
+
   domNode.onchange = () => view[value] = domNode.value
 }
 
