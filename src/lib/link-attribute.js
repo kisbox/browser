@@ -101,25 +101,29 @@ function pullOn (eventName, object, domNode, key, attribute) {
       const current = stamp = +new Date()
       timeout(inputDelay).then(() => {
         if (stamp !== current) return
-        object[key] = htmlToJs(domNode[attribute])
-        domNode.setCustomValidity("")
+        pullValue(object, domNode, key, attribute)
       })
     })
+
     domNode.addEventListener("keydown", (event) => {
       if (event.keyCode !== 13) return
-      object[key] = htmlToJs(domNode[attribute])
-      domNode.setCustomValidity("")
+      pullValue(object, domNode, key, attribute)
     })
+
     domNode.addEventListener("blur", () => {
-      object[key] = htmlToJs(domNode[attribute])
-      domNode.setCustomValidity("")
+      pullValue(object, domNode, key, attribute)
     })
+
   } else {
     domNode.addEventListener(eventName, () => {
-      object[key] = htmlToJs(domNode[attribute])
-      domNode.setCustomValidity("")
+      pullValue(object, domNode, key, attribute)
     })
   }
+}
+
+function pullValue (object, domNode, key, attribute) {
+  object[key] = htmlToJs(domNode[attribute])
+  domNode.setCustomValidity("")
 }
 
 function maybeBind (func, context) {
