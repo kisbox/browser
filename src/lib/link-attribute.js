@@ -6,8 +6,8 @@
  * TODO: complete binding?
  */
 
-const { dispatch, timeout } = require("@kisbox/helpers")
 const { type } = require("@kisbox/utils")
+const { dispatch, timeout, either } = require("@kisbox/helpers")
 
 /* Library */
 
@@ -94,15 +94,15 @@ rules.checkbox = function (domNode, attribute, object, key) {
 
 function pullOn (eventName, object, domNode, key, attribute) {
   if (eventName === "input") {
+    const inputDelay = either(object.constructor.$inputDelay, 1000)
+
     let stamp
     domNode.addEventListener(eventName, () => {
       const current = stamp = +new Date()
-      const delay = domNode.type === "range" ? 40 : 1000
-      timeout(delay).then(() => {
-        if (stamp === current) {
-          object[key] = htmlToJs(domNode[attribute])
-          domNode.setCustomValidity("")
-        }
+      timeout(inputDelay).then(() => {
+        if (stamp !== current) return
+        object[key] = htmlToJs(domNode[attribute])
+        domNode.setCustomValidity("")
       })
     })
     domNode.addEventListener("keydown", (event) => {
